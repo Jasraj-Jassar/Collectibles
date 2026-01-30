@@ -19,7 +19,5 @@ Thumbs.db
 # Logs
 *.log
 
-# Ignore all documents except the placeholder
-Documents/*
-!Documents/.gitkeep
-!Documents/README.md
+# Ignore my personal documents, keep the examples
+Documents/Test*

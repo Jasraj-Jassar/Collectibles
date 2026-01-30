@@ -1,0 +1,21 @@
+CASE FILE: #2847
+
+Subject: Unidentified Object
+Location: Sector 7
+Date: Classified
+
+DESCRIPTION:
+Object appears to be a standard household item but exhibits 
+unusual properties when observed. All personnel are advised 
+to maintain visual contact at all times.
+
+CONTAINMENT STATUS: Active
+THREAT LEVEL: Moderate
+
+NOTES:
+- Do not leave unattended
+- Report any changes immediately
+- Standard protocols apply
+
+---
+Classification: RESTRICTED
