@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Control</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- VIEW 1: Main Page - Folder Tiles -->
+        <div class="view main-view active" id="mainView">
+            <div class="tiles-container" id="tilesContainer">
+                <!-- Folder tiles will be loaded here -->
+            </div>
+        </div>
+
+        <!-- VIEW 2: Folder View - List + Preview -->
+        <div class="view folder-view" id="folderView">
+            <!-- Back button and folder title -->
+            <header class="folder-header">
+                <button class="back-btn" id="backBtn">
+                    <span class="back-icon">‹</span>
+                    <span>Back</span>
+                </button>
+                <div class="folder-title-section">
+                    <span class="folder-title-icon">◈</span>
+                    <h1 class="folder-title" id="folderTitle">Folder Name</h1>
+                </div>
+                <div class="folder-stats">
+                    <span class="stat-label">Collected</span>
+                    <span class="stat-value" id="folderStats">0/0</span>
+                </div>
+            </header>
+
+            <div class="folder-content">
+                <!-- Left: File List -->
+                <aside class="file-list-panel" id="fileListPanel">
+                    <nav class="file-list" id="fileList">
+                        <!-- File items will be loaded here -->
+                    </nav>
+                </aside>
+
+                <!-- Right: Document Preview -->
+                <main class="document-preview" id="documentPreview">
+                    <div class="preview-placeholder" id="previewPlaceholder">
+                        <div class="placeholder-icon">◇</div>
+                        <p>Select a document to view</p>
+                    </div>
+                    
+                    <!-- Document display area -->
+                    <div class="document-display" id="documentDisplay">
+                        <div class="document-header">
+                            <h2 class="document-title" id="documentTitle"></h2>
+                            <div class="document-meta" id="documentMeta"></div>
+                        </div>
+                        <div class="document-content" id="documentContent">
+                            <!-- Document content will be rendered here -->
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
