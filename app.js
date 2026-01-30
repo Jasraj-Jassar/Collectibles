@@ -348,7 +348,76 @@ class DocumentViewer {
             if (e.key === 'Escape' && this.folderView.classList.contains('active')) {
                 this.goBack();
             }
+            
+            // Arrow key navigation
+            if (this.mainView.classList.contains('active')) {
+                this.handleMainViewKeys(e);
+            } else if (this.folderView.classList.contains('active')) {
+                this.handleFolderViewKeys(e);
+            }
         });
+    }
+
+    handleMainViewKeys(e) {
+        const tiles = Array.from(this.tilesContainer.querySelectorAll('.folder-tile'));
+        if (tiles.length === 0) return;
+        
+        const activeTile = this.tilesContainer.querySelector('.folder-tile.active');
+        let activeIndex = activeTile ? tiles.indexOf(activeTile) : -1;
+        
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            activeIndex = activeIndex < tiles.length - 1 ? activeIndex + 1 : 0;
+            this.setActiveTile(tiles, activeIndex);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            activeIndex = activeIndex > 0 ? activeIndex - 1 : tiles.length - 1;
+            this.setActiveTile(tiles, activeIndex);
+        } else if (e.key === 'Enter' && activeTile) {
+            e.preventDefault();
+            const folder = this.folders.find(f => f.path === activeTile.dataset.path);
+            if (folder) this.openFolder(folder);
+        }
+    }
+
+    setActiveTile(tiles, index) {
+        tiles.forEach(t => t.classList.remove('active'));
+        tiles[index].classList.add('active');
+        tiles[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    handleFolderViewKeys(e) {
+        const items = Array.from(this.fileList.querySelectorAll('.file-item'));
+        if (items.length === 0) return;
+        
+        const activeItem = this.fileList.querySelector('.file-item.active');
+        let activeIndex = activeItem ? items.indexOf(activeItem) : -1;
+        
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            activeIndex = activeIndex < items.length - 1 ? activeIndex + 1 : 0;
+            this.setActiveFileItem(items, activeIndex);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            activeIndex = activeIndex > 0 ? activeIndex - 1 : items.length - 1;
+            this.setActiveFileItem(items, activeIndex);
+        } else if (e.key === 'Enter' && activeIndex >= 0) {
+            e.preventDefault();
+            const file = this.currentFiles[activeIndex];
+            if (file) this.selectFile(items[activeIndex], file);
+        }
+    }
+
+    setActiveFileItem(items, index) {
+        items.forEach(item => item.classList.remove('active'));
+        items[index].classList.add('active');
+        items[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Also load the preview for the focused file
+        const file = this.currentFiles[index];
+        if (file) {
+            this.selectFile(items[index], file);
+        }
     }
 
     // Utility functions

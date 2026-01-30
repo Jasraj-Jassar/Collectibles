@@ -12,7 +12,12 @@ Ever played Control and loved how you could browse through all those FBC case fi
 - Click a folder to see its contents as a list
 - **Right panel** shows a preview of whatever file you select
 - Supports PDFs, images, text files, and markdown
-- Press Escape or click back to return to the folder view
+
+### Keyboard navigation
+
+- **Arrow keys** (←→↑↓) to navigate between folders/files
+- **Enter** to open the selected folder or file
+- **Escape** to go back to the folder view
 
 ## Running it
 
